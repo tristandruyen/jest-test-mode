@@ -184,7 +184,12 @@ mode"
         (test (jest-test-unit-at-point)))
     (if (and filename test)
         (jest-test-from-project-directory filename
-          (let ((jest-test-options (seq-concatenate 'list jest-test-options (list "-t" test))))
+          (let (
+                (jest-test-options
+                 (seq-concatenate
+                  'list jest-test-options
+                  (list "-t" test)
+                  (list "--runTestsByPath" filename))))
             (jest-test-run-command (jest-test-command filename))))
       (message jest-test-not-found-message))))
 
