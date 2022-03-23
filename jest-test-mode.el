@@ -245,10 +245,7 @@ Match Group 2 contains the test name" )
   "Format test arguments for FILENAME."
   (format jest-test-command-string
           (mapconcat #'shell-quote-argument jest-test-npx-options " ")
-          (mapconcat #'shell-quote-argument jest-test-options " ")
-          (if (string-empty-p filename)
-              filename
-            (file-relative-name filename (jest-test-project-root filename)))))
+          (mapconcat #'shell-quote-argument jest-test-options " ")))
 
 ;;; compilation-mode support
 
