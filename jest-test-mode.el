@@ -260,7 +260,7 @@ Match Group 2 contains the test name" )
           (mapconcat #'shell-quote-argument jest-test-options " ")
           (if (string-empty-p filename)
               filename
-            (file-relative-name filename (jest-test-project-root filename)))))
+            (file-relative-name filename (projectile-project-root)))))
 
 ;;; compilation-mode support
 
