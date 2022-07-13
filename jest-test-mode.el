@@ -201,7 +201,7 @@ mode"
                 (jest-test-options
                  (seq-concatenate
                   'list jest-test-options
-                  (list "-t" test)
+                  (list "--testNamePattern" test)
                   (list "--runTestsByPath" filename))))
             (jest-test-run-command (jest-test-command filename))))
       (message jest-test-not-found-message))))
