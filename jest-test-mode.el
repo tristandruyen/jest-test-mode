@@ -159,7 +159,8 @@ mode"
 
 (defun jest-test-npm-project-root-p (directory)
   "Check if DIRECTORY contain a package.json file."
-  (file-exists-p (concat (file-name-as-directory directory) "/package.json")))
+  (and (file-exists-p (concat (file-name-as-directory directory) "/package.json"))
+       (file-exists-p (concat (file-name-as-directory directory) "/node_modules/jest/bin/jest.js"))))
 
 (defun jest-test-find-file ()
   "Find the testfile to run. Assumed to be the current file."
@@ -260,7 +261,7 @@ Match Group 2 contains the test name" )
           (mapconcat #'shell-quote-argument jest-test-options " ")
           (if (string-empty-p filename)
               filename
-            (file-relative-name filename (projectile-project-root)))))
+            (file-relative-name filename (jest-test-project-root filename)))))
 
 ;;; compilation-mode support
 
